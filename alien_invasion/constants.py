@@ -22,14 +22,14 @@ FIELD_LEFT = 0
 FIELD_RIGHT = SCREEN_WIDTH
 
 # FONT
-FONT_FILE = "assets/fonts/zorque.otf"
+FONT_FILE = "alien_invasion/assets/fonts/zorque.otf"
 FONT_SMALL = 32
 FONT_LARGE = 48
 
 # SOUND
-BOUNCE_SOUND = "assets/sounds/boing.wav"
-WELCOME_SOUND = "assets/sounds/start.wav"
-OVER_SOUND = "assets/sounds/over.wav"
+BOUNCE_SOUND = "alien_invasion/assets/sounds/boing.wav"
+WELCOME_SOUND = "alien_invasion/assets/sounds/start.wav"
+OVER_SOUND = "alien_invasion/assets/sounds/over.wav"
 
 # TEXT
 ALIGN_CENTER = 0
@@ -59,7 +59,7 @@ GAME_OVER = 4
 dir = os.getcwd()  # Get the current working directory (cwd)
 cwd =dir.replace('\\','/')
 #LEVEL_FILE = "d:/Documentos/BYU-Pathway/CSE210/batter-complete/batter/assets/data/level-{:03}.txt"
-LEVEL_FILE = cwd + "/assets/data/level-{:03}.txt"
+LEVEL_FILE = cwd + "/alien_invasion/assets/data/level-{:03}.txt" 
 BASE_LEVELS = 5
 
 # -------------------------------------------------------------------------------------------------- 
@@ -95,7 +95,7 @@ SCORE_FORMAT = "SCORE: {}"
 
 # TANK
 TANK_GROUP = "tanks"
-TANK_IMAGES = [f"assets/images/{n:03}.png" for n in range(100, 103)]
+TANK_IMAGES = [f"alien_invasion/assets/images/{n:03}.png" for n in range(100, 103)]
 TANK_WIDTH = 106
 TANK_HEIGHT = 62
 TANK_RATE = 6
@@ -103,7 +103,7 @@ TANK_VELOCITY = 7
 
 # PROJECTILS
 PROJECTILS_GROUP = "projectils"
-PROJECTILS_IMAGE = "assets/images/000.png"
+PROJECTILS_IMAGE = "alien_invasion/assets/images/000.png"
 PROJECTILS_WIDTH = 28
 PROJECTILS_HEIGHT = 28
 PROJECTILS_RATE = 6
@@ -112,7 +112,7 @@ PROJECTILS_NUMBER = 4
 
 # BOMBS
 BOMBS_GROUP = "bombs"
-BOMBS_IMAGE = "assets/images/000.png"
+BOMBS_IMAGE = "alien_invasion/assets/images/000.png"
 BOMBS_WIDTH = 28
 BOMBS_HEIGHT = 28
 BOMBS_RATE = 6
@@ -122,10 +122,10 @@ BOMBS_NUMBER = 4
 # ALIENS
 ALIENS_GROUP = "aliens"
 ALIENS_IMAGES = {
-    "b": [f"assets/images/{i:03}.png" for i in range(10,19)],
-    "g": [f"assets/images/{i:03}.png" for i in range(20,29)],
-    "p": [f"assets/images/{i:03}.png" for i in range(30,39)],
-    "y": [f"assets/images/{i:03}.png" for i in range(40,49)]
+    "b": [f"alien_invasion/assets/images/{i:03}.png" for i in range(10,19)],
+    "g": [f"alien_invasion/assets/images/{i:03}.png" for i in range(20,29)],
+    "p": [f"alien_invasion/assets/images/{i:03}.png" for i in range(30,39)],
+    "y": [f"alien_invasion/assets/images/{i:03}.png" for i in range(40,49)]
 }
 ALIENS_WIDTH = 90
 ALIENS_HEIGHT = 60
