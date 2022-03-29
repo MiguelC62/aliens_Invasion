@@ -1,7 +1,6 @@
 from constants import *
 from game.casting.sound import Sound
 from game.scripting.action import Action
-#from game.casting.projectils import Projectils
 
 class CollideAlienAction(Action):
 

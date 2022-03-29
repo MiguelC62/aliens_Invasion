@@ -122,9 +122,9 @@ BOMBS_GROUP = "bombs"
 BOMBS_IMAGE = "alien_invasion/assets/images/bomb.png"
 BOMBS_WIDTH = 28
 BOMBS_HEIGHT = 28
-BOMBS_RATE = 6
+BOMBS_RATE = 2
 BOMBS_VELOCITY = 10
-BOMBS_NUMBER = 3
+BOMBS_NUMBER = 100
 
 # ALIENS
 ALIENS_GROUP = "aliens"

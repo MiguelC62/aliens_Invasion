@@ -16,6 +16,7 @@ from game.casting.bunker import Bunker
 from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
+from game.scripting.collide_bombs_action import CollideBombsAction
 from game.scripting.control_tank_action import ControlTankAction
 from game.scripting.control_bomb_action import ControlBombAction
 from game.scripting.draw_projectil_action import DrawProjectilAction
@@ -50,6 +51,7 @@ class SceneManager:
     VIDEO_SERVICE = RaylibVideoService(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT)
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_ALIENS_ACTION = CollideAlienAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_BOMBS_ACTION = CollideBombsAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
     CONTROL_BOMB_ACTION = ControlBombAction(KEYBOARD_SERVICE)
     DRAW_TANK_ACTION= DrawTankAction(VIDEO_SERVICE)
@@ -158,9 +160,10 @@ class SceneManager:
     def _activate_bomb(self, cast):
         #self._keyboard_service = KEYBOARD_SERVICE
         #if self._keyboard_service.is_key_pressed(SPACE):
-        bombs = cast.get_actors(BOMBS_GROUP)
-        for bomb in bombs:
-            bomb.release()
+        for i in range(4):
+            bombs = cast.get_actors(BOMBS_GROUP)
+            for bomb in bombs:
+                bomb.release()
 
     def _add_aliens(self, cast):
         cast.clear_actors(ALIENS_GROUP)
@@ -249,11 +252,9 @@ class SceneManager:
 
     def _add_bomb(self, cast):
         cast.clear_actors(BOMBS_GROUP)
-        for i in range(4):
+        for i in range(BOMBS_NUMBER):
             x = random.randint(BOMBS_WIDTH, SCREEN_WIDTH - BOMBS_WIDTH)
-            #x = CENTER_X - BOMBS_WIDTH / 2
             y = FIELD_TOP + 4 * ALIENS_HEIGHT
-            #y = SCREEN_HEIGHT / 3 - BOMBS_HEIGHT #- TANK_HEIGHT 
             position = Point(x, y)
             size = Point(BOMBS_WIDTH, BOMBS_HEIGHT)
             velocity = Point(0, 0)
@@ -316,4 +317,5 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_BOMB_ACTION)
         script.add_action(UPDATE, self.MOVE_TANK_ACTION)
         script.add_action(UPDATE, self.COLLIDE_ALIENS_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_BOMBS_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)
