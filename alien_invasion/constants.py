@@ -101,6 +101,13 @@ TANK_HEIGHT = 62
 TANK_RATE = 6
 TANK_VELOCITY = 7
 
+# BUNKER
+BUNKER_GROUP = "bunkers"
+BUNKER_IMAGES = [f"alien_invasion/assets/images/{n:03}.png" for n in range(105, 108)]
+BUNKER_WIDTH = 106
+BUNKER_RATE = 6
+BUNKER_HEIGHT = 62
+
 # PROJECTILS
 PROJECTILS_GROUP = "projectils"
 PROJECTILS_IMAGE = "alien_invasion/assets/images/000.png"

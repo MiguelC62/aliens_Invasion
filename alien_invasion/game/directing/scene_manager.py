@@ -12,6 +12,7 @@ from game.casting.label import Label
 from game.casting.point import Point
 from game.casting.stats import Stats
 from game.casting.text import Text 
+from game.casting.bunker import Bunker
 from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
@@ -23,6 +24,7 @@ from game.scripting.draw_aliens_action import DrawAliensAction
 from game.scripting.draw_dialog_action import DrawDialogAction
 from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_tank_action import DrawTankAction
+from game.scripting.draw_bunker_action import DrawBunkerAction
 from game.scripting.end_drawing_action import EndDrawingAction
 from game.scripting.initialize_devices_action import InitializeDevicesAction
 from game.scripting.load_assets_action import LoadAssetsAction
@@ -51,6 +53,7 @@ class SceneManager:
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
     CONTROL_BOMB_ACTION = ControlBombAction(KEYBOARD_SERVICE)
     DRAW_TANK_ACTION= DrawTankAction(VIDEO_SERVICE)
+    DRAW_BUNKER_ACTION = DrawBunkerAction(VIDEO_SERVICE)
     DRAW_PROJECTIL_ACTION = DrawProjectilAction(VIDEO_SERVICE)
     DRAW_BOMB_ACTION = DrawBombAction(VIDEO_SERVICE)
     DRAW_ALIENS_ACTION = DrawAliensAction(VIDEO_SERVICE)
@@ -93,6 +96,7 @@ class SceneManager:
         self._add_projectils(cast)
         self._add_aliens(cast)
         self._add_tank(cast)
+        self._add_bunker(cast)
         self._add_bomb(cast)
         self._add_dialog(cast, ENTER_TO_START)
         self._add_initialize_script(script)
@@ -107,6 +111,7 @@ class SceneManager:
         self._add_projectils(cast)
         self._add_aliens(cast)
         self._add_tank(cast)
+        self._add_bunker(cast)
         self._add_bomb(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
         script.clear_actions(INPUT)
@@ -118,6 +123,7 @@ class SceneManager:
         self._add_projectils(cast)
         self._add_aliens(cast)
         self._add_tank(cast)
+        self._add_bunker(cast)
         self._add_bomb(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
         script.clear_actions(INPUT)
@@ -138,6 +144,7 @@ class SceneManager:
         self._add_projectils(cast)
         self._add_tank(cast)
         self._add_bomb(cast)
+        self._add_bunker(cast)
         self._add_dialog(cast, WAS_GOOD_GAME)
         script.clear_actions(INPUT)
         script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))
@@ -256,6 +263,22 @@ class SceneManager:
         
             cast.add_actor(BOMBS_GROUP, bomb)
 
+    def _add_bunker(self, cast):
+        cast.clear_actors(BUNKER_GROUP)
+        x = (CENTER_X-300) - BUNKER_WIDTH / 2
+        y = SCREEN_HEIGHT - (BUNKER_HEIGHT+100)
+
+        for i in range(3):
+            position = Point(x, y)
+            size = Point(BUNKER_WIDTH, BUNKER_HEIGHT)
+            velocity = Point(0, 0)
+            body = Body(position, size, velocity)
+            animation = Animation(BUNKER_IMAGES, BUNKER_RATE)
+            bunker = Bunker(body, animation)
+
+            x = x + 300
+            cast.add_actor(BUNKER_GROUP, bunker)
+
     # ----------------------------------------------------------------------------------------------
     # scripting methods
     # ----------------------------------------------------------------------------------------------
@@ -273,6 +296,7 @@ class SceneManager:
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         script.add_action(OUTPUT, self.DRAW_ALIENS_ACTION)
         script.add_action(OUTPUT, self.DRAW_TANK_ACTION)
+        script.add_action(OUTPUT, self.DRAW_BUNKER_ACTION)
         script.add_action(OUTPUT, self.DRAW_PROJECTIL_ACTION)
         script.add_action(OUTPUT, self.DRAW_BOMB_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
