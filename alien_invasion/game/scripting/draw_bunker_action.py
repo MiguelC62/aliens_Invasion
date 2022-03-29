@@ -8,14 +8,19 @@ class DrawBunkerAction(Action):
         self._video_service = video_service
         
     def execute(self, cast, script, callback):
-        bunker = cast.get_first_actor(BUNKER_GROUP)
-        body = bunker.get_body()
+        bunkers = cast.get_actors(BUNKER_GROUP)
 
-        if bunker.is_debug():
-            rectangle = body.get_rectangle()
-            self._video_service.draw_rectangle(rectangle, PURPLE)
-          
-        animation = bunker.get_animation()
-        image = animation.next_image()
-        position = body.get_position()
-        self._video_service.draw_image(image, position)
+        for bunker in bunkers:
+            body = bunker.get_body()
+
+            if bunker.is_debug():
+                rectangle = body.get_rectangle()
+                self._video_service.draw_rectangle(rectangle, PURPLE)
+            
+            animation = bunker.get_animation()
+            image = animation.next_image()
+            position = body.get_position()
+            self._video_service.draw_image(image, position)
+
+
+

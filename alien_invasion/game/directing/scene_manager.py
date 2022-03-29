@@ -276,8 +276,8 @@ class SceneManager:
             body = Body(position, size, velocity)
             animation = Animation(BUNKER_IMAGES, BUNKER_RATE)
             bunker = Bunker(body, animation)
-
             x = x + 300
+            
             cast.add_actor(BUNKER_GROUP, bunker)
 
     # ----------------------------------------------------------------------------------------------
