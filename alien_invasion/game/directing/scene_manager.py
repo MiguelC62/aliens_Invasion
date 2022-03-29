@@ -1,4 +1,5 @@
 import csv
+import random
 from constants import *
 from game.casting.animation import Animation
 from game.casting.projectils import Projectils
@@ -15,6 +16,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
 from game.scripting.control_tank_action import ControlTankAction
+from game.scripting.control_bomb_action import ControlBombAction
 from game.scripting.draw_projectil_action import DrawProjectilAction
 from game.scripting.draw_bomb_action import DrawBombAction
 from game.scripting.draw_aliens_action import DrawAliensAction
@@ -47,6 +49,7 @@ class SceneManager:
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_ALIENS_ACTION = CollideAlienAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
+    CONTROL_BOMB_ACTION = ControlBombAction(KEYBOARD_SERVICE)
     DRAW_TANK_ACTION= DrawTankAction(VIDEO_SERVICE)
     DRAW_PROJECTIL_ACTION = DrawProjectilAction(VIDEO_SERVICE)
     DRAW_BOMB_ACTION = DrawBombAction(VIDEO_SERVICE)
@@ -127,6 +130,7 @@ class SceneManager:
         cast.clear_actors(DIALOG_GROUP)
         script.clear_actions(INPUT)
         script.add_action(INPUT, self.CONTROL_TANK_ACTION)
+        script.add_action(INPUT, self.CONTROL_BOMB_ACTION)
         self._add_update_script(script)
         self._add_output_script(script)
 
@@ -147,8 +151,9 @@ class SceneManager:
     def _activate_bomb(self, cast):
         #self._keyboard_service = KEYBOARD_SERVICE
         #if self._keyboard_service.is_key_pressed(SPACE):
-        bomb = cast.get_first_actor(BOMBS_GROUP)
-        bomb.release()
+        bombs = cast.get_actors(BOMBS_GROUP)
+        for bomb in bombs:
+            bomb.release()
 
     def _add_aliens(self, cast):
         cast.clear_actors(ALIENS_GROUP)
@@ -237,16 +242,18 @@ class SceneManager:
 
     def _add_bomb(self, cast):
         cast.clear_actors(BOMBS_GROUP)
-        #tank = cast.get_first_actor(TANK_GROUP)
-        x = CENTER_X - BOMBS_WIDTH / 2
-        y = SCREEN_HEIGHT / 3 - BOMBS_HEIGHT #- TANK_HEIGHT 
-        position = Point(x, y)
-        size = Point(BOMBS_WIDTH, BOMBS_HEIGHT)
-        velocity = Point(0, 0)
-        body = Body(position, size, velocity)
-        image = Image(BOMBS_IMAGE)
-        bomb = Bombs(body, image, True)
-        for i in range(BOMBS_NUMBER):
+        for i in range(4):
+            x = random.randint(BOMBS_WIDTH, SCREEN_WIDTH - BOMBS_WIDTH)
+            #x = CENTER_X - BOMBS_WIDTH / 2
+            y = FIELD_TOP + 4 * ALIENS_HEIGHT
+            #y = SCREEN_HEIGHT / 3 - BOMBS_HEIGHT #- TANK_HEIGHT 
+            position = Point(x, y)
+            size = Point(BOMBS_WIDTH, BOMBS_HEIGHT)
+            velocity = Point(0, 0)
+            body = Body(position, size, velocity)
+            image = Image(BOMBS_IMAGE)
+            bomb = Bombs(body, image, True)
+        
             cast.add_actor(BOMBS_GROUP, bomb)
 
     # ----------------------------------------------------------------------------------------------

@@ -9,17 +9,26 @@ class DrawBombAction(Action):
         self._video_service = video_service
         
     def execute(self, cast, script, callback):
-        bomb = cast.get_first_actor(BOMBS_GROUP)
-        body = bomb.get_body()
+        bombs = cast.get_actors(BOMBS_GROUP)
+        for bomb in bombs:
+            body = bomb.get_body()
 
-        if bomb.is_debug():
-            rectangle = body.get_rectangle()
-            self._video_service.draw_rectangle(rectangle, PURPLE)
+            if bomb.is_debug():
+                rectangle = body.get_rectangle()
+                self._video_service.draw_rectangle(rectangle, PURPLE)
             
-        image = bomb.get_image()
-        position = body.get_position()
-        self._video_service.draw_image(image, position)
+            image = bomb.get_image()
+            position = body.get_position()
+            self._video_service.draw_image(image, position)
 
+
+        
+    
+
+            # animation = alien.get_animation()
+            # image = animation.next_image()
+            # position = body.get_position()
+            # self._video_service.draw_image(image, position)
 
         
         
