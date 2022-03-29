@@ -38,7 +38,7 @@ class Bombs(Actor):
     def release(self):
         """Release the aliens projectile in a positions."""
 
-        vy = PROJECTILS_VELOCITY
+        vy = BOMBS_VELOCITY
         vx = 0
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
