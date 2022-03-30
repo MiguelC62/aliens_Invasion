@@ -43,7 +43,6 @@ class Bombs(Actor):
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
         
-
     def stop_moving(self):
         """Stops the bat from moving."""
         velocity = Point(0, 0)

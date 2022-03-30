@@ -17,6 +17,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
 from game.scripting.collide_bombs_action import CollideBombsAction
+from game.scripting.collide_tank_action import CollideTankAction
 from game.scripting.control_tank_action import ControlTankAction
 from game.scripting.control_bomb_action import ControlBombAction
 from game.scripting.draw_projectil_action import DrawProjectilAction
@@ -52,6 +53,7 @@ class SceneManager:
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_ALIENS_ACTION = CollideAlienAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BOMBS_ACTION = CollideBombsAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_TANK_ACTION = CollideTankAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
     CONTROL_BOMB_ACTION = ControlBombAction(KEYBOARD_SERVICE)
     DRAW_TANK_ACTION= DrawTankAction(VIDEO_SERVICE)
@@ -318,4 +320,5 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_TANK_ACTION)
         script.add_action(UPDATE, self.COLLIDE_ALIENS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BOMBS_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_TANK_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)
