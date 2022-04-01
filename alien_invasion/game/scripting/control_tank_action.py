@@ -21,6 +21,5 @@ class ControlTankAction(Action):
             tank_position = tank_body.get_position()
             projectil_body.set_position(tank_position)
             projectil.release()
-            #cast.remove_actor(PROJECTILS_GROUP, projectil)
         else: 
             tank.stop_moving()        

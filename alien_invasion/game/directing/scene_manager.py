@@ -17,6 +17,8 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
 from game.scripting.collide_bombs_action import CollideBombsAction
+#from game.scripting.collide_projectil_bomb_action import CollideProjectilBombAction
+from game.scripting.collide_bunkers_action import CollideBunkersAction
 from game.scripting.collide_tank_action import CollideTankAction
 from game.scripting.control_tank_action import ControlTankAction
 from game.scripting.control_bomb_action import ControlBombAction
@@ -53,6 +55,8 @@ class SceneManager:
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_ALIENS_ACTION = CollideAlienAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BOMBS_ACTION = CollideBombsAction(PHYSICS_SERVICE, AUDIO_SERVICE, VIDEO_SERVICE)
+    #COLLIDE_PROJECTIL_BOMB_ACTION = CollideProjectilBombAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_BUNKERS_ACTION = CollideBunkersAction(PHYSICS_SERVICE, AUDIO_SERVICE, VIDEO_SERVICE)
     COLLIDE_TANK_ACTION = CollideTankAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
     CONTROL_BOMB_ACTION = ControlBombAction(KEYBOARD_SERVICE)
@@ -160,8 +164,6 @@ class SceneManager:
     # ----------------------------------------------------------------------------------------------
     
     def _activate_bomb(self, cast):
-        #self._keyboard_service = KEYBOARD_SERVICE
-        #if self._keyboard_service.is_key_pressed(SPACE):
         for i in range(4):
             bombs = cast.get_actors(BOMBS_GROUP)
             for bomb in bombs:
@@ -240,16 +242,16 @@ class SceneManager:
 
     def _add_projectils(self, cast):
         cast.clear_actors(PROJECTILS_GROUP)
-        #tank = cast.get_first_actor(TANK_GROUP)
         x = CENTER_X - PROJECTILS_WIDTH / 2
-        y = SCREEN_HEIGHT - PROJECTILS_HEIGHT #- TANK_HEIGHT 
-        position = Point(x, y)
-        size = Point(PROJECTILS_WIDTH, PROJECTILS_HEIGHT)
-        velocity = Point(0, 0)
-        body = Body(position, size, velocity)
-        image = Image(PROJECTILS_IMAGE)
-        projectil = Projectils(body, image, True)
+        y = SCREEN_HEIGHT - PROJECTILS_HEIGHT 
+        
         for i in range(PROJECTILS_NUMBER):
+            position = Point(x, y)
+            size = Point(PROJECTILS_WIDTH, PROJECTILS_HEIGHT)
+            velocity = Point(0, 0)
+            body = Body(position, size, velocity)
+            image = Image(PROJECTILS_IMAGE)
+            projectil = Projectils(body, image, True)
             cast.add_actor(PROJECTILS_GROUP, projectil)
 
     def _add_bomb(self, cast):
@@ -320,5 +322,7 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_TANK_ACTION)
         script.add_action(UPDATE, self.COLLIDE_ALIENS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BOMBS_ACTION)
+        #script.add_action(UPDATE, self.COLLIDE_PROJECTIL_BOMB_ACTION)
+        script.add_action(UPDATE, self.COLLIDE_BUNKERS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_TANK_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)

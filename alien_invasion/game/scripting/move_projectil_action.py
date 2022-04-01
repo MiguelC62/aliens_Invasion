@@ -8,9 +8,11 @@ class MoveProjectilAction(Action):
         pass
         
     def execute(self, cast, script, callback):
-        projectil = cast.get_first_actor(PROJECTILS_GROUP)
-        body = projectil.get_body()
-        position = body.get_position()
-        velocity = body.get_velocity()
-        position = position.add(velocity)
-        body.set_position(position)
+        projectils = cast.get_actors(PROJECTILS_GROUP)
+        for x in range(1):
+            projectil = projectils[x]
+            body = projectil.get_body()
+            position = body.get_position()
+            velocity = body.get_velocity()
+            position = position.add(velocity)
+            body.set_position(position)

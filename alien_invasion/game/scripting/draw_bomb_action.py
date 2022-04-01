@@ -9,8 +9,6 @@ class DrawBombAction(Action):
         
     def execute(self, cast, script, callback):
         bomb = cast.get_first_actor(BOMBS_GROUP)
-    #bombs = cast.get_actors(BOMBS_GROUP)
-    #for bomb in bombs:
         body = bomb.get_body()
 
         if bomb.is_debug():
