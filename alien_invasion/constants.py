@@ -104,6 +104,10 @@ TANK_VELOCITY = 7
 # BUNKER
 BUNKER_GROUP = "bunkers"
 BUNKER_IMAGES = [f"alien_invasion/assets/images/{n:03}.png" for n in range(105, 108)]
+BUNKER_DESTROY1_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(109, 112)]
+BUNKER_DESTROY2_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(113, 116)]
+BUNKER_DESTROY3_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(117, 120)]
+BUNKER_DESTROY4_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(121, 124)]
 BUNKER_WIDTH = 106
 BUNKER_RATE = 6
 BUNKER_HEIGHT = 62
@@ -123,7 +127,7 @@ BOMBS_IMAGE = "alien_invasion/assets/images/bomb.png"
 BOMBS_WIDTH = 28
 BOMBS_HEIGHT = 28
 BOMBS_RATE = 2
-BOMBS_VELOCITY = 5
+BOMBS_VELOCITY = 6
 BOMBS_NUMBER = 100
 
 # ALIENS
