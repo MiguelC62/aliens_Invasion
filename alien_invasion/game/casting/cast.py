@@ -6,7 +6,7 @@ class Cast:
         self._actors = {}
         
     def add_actor(self, group, actor):
-        """Adds an actor to the given group.
+        """Adds an actor to a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -17,7 +17,7 @@ class Cast:
         self._actors[group].append(actor)
 
     def clear_actors(self, group):
-        """Clears actors from the given group.
+        """Clears actors from a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -26,15 +26,15 @@ class Cast:
             self._actors[group] = []
     
     def clear_all_actors(self):
-        """Clears all actors."""
+        """Clears all the actors."""
         for group in self._actors:
             self._actors[group] = []
     
     def get_actors(self, group):
-        """Gets the actors in the given group.
+        """Gets the actors in a given group.
         
         Args:
-            group: A string containing the name of the group.
+            group: A string containing the name of a group.
 
         Returns:
             A list of Actor instances.
@@ -56,7 +56,7 @@ class Cast:
         return results
 
     def get_first_actor(self, group):
-        """Gets the first actor in the given group.
+        """Gets the first actor in a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -70,10 +70,10 @@ class Cast:
         return result
 
     def remove_actor(self, group, actor):
-        """Removes an actor from the given group.
+        """Removes an actor from a given group.
         
         Args:
-            group: A string containing the name of the group.
+            group: A string containing a name of the group.
             actor: The instance of Actor (or a subclass) to remove.
         """
         if group in self._actors:

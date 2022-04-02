@@ -58,7 +58,7 @@ GAME_OVER = 4
 # LEVELS
 dir = os.getcwd()  # Get the current working directory (cwd)
 cwd =dir.replace('\\','/')
-#LEVEL_FILE = "d:/Documentos/BYU-Pathway/CSE210/batter-complete/batter/assets/data/level-{:03}.txt"
+#LEVEL_FILE = "d:/Documents/BYU-Pathway/CSE210/ALIENS_INVASIONS/alien_invasion/assets/data/level-{:03}.txt"
 LEVEL_FILE = cwd + "/alien_invasion/assets/data/level-{:03}.txt" 
 BASE_LEVELS = 5
 

@@ -9,7 +9,7 @@ class Script:
         self._actions = {}
         
     def add_action(self, group, action):
-        """Adds an action to the given group.
+        """Adds an action to a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -20,7 +20,7 @@ class Script:
         self._actions[group].append(action)
 
     def clear_actions(self, group):
-        """Clears actions from the given group.
+        """Clears actions from a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -34,7 +34,7 @@ class Script:
             self._actions[group] = []
 
     def get_actions(self, group):
-        """Gets the actions in the given group.
+        """Gets the actions in a given group.
         
         Args:
             group: A string containing the name of the group.
@@ -48,7 +48,7 @@ class Script:
         return results
     
     def remove_action(self, group, action):
-        """Removes an action from the given group.
+        """Removes an action from a given group.
         
         Args:
             group: A string containing the name of the group.
