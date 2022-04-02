@@ -31,7 +31,7 @@ class Text:
         """Gets the font size of the text.
         
         Returns:
-            A number representing the font size.
+            A value representing the font size.
         """
         return self._size
 
