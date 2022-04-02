@@ -22,7 +22,8 @@ class CollideAlienAction(Action):
                 points = alien.get_points()
                 stats.add_points(points)
                 cast.remove_actor(ALIENS_GROUP, alien)
-                cast.remove_actor(PROJECTILS_GROUP, projectil)
+                #cast.remove_actor(PROJECTILS_GROUP, projectil)
+                projectil.stop_moving()      
         
                 
                 

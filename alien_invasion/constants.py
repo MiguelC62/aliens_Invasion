@@ -108,6 +108,7 @@ BUNKER_DESTROY1_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in ran
 BUNKER_DESTROY2_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(113, 116)]
 BUNKER_DESTROY3_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(117, 120)]
 BUNKER_DESTROY4_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(121, 124)]
+BUNKER_DESTROY5_IMAGE = [f"alien_invasion/assets/images/{n:03}.png" for n in range(125, 128)]
 BUNKER_WIDTH = 106
 BUNKER_RATE = 6
 BUNKER_HEIGHT = 62
@@ -118,7 +119,7 @@ PROJECTILS_IMAGE = "alien_invasion/assets/images/000.png"
 PROJECTILS_WIDTH = 28
 PROJECTILS_HEIGHT = 28
 PROJECTILS_RATE = 6
-PROJECTILS_VELOCITY = 20
+PROJECTILS_VELOCITY = 15
 PROJECTILS_NUMBER = 1000
 
 # BOMBS

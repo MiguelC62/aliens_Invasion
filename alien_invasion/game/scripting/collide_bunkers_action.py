@@ -54,21 +54,21 @@ class CollideBunkersAction(Action):
 
     def destroy_bunker(self, cast, bunker, bunker_body, index):
         if index == 1:
-            image = BUNKER_DESTROY1_IMAGE
+            image = BUNKER_DESTROY5_IMAGE
             self.replace_image(cast, bunker, image, bunker_body)
             index += 1
-        elif index == 2:
-            image = BUNKER_DESTROY2_IMAGE
-            self.replace_image(cast, bunker, image, bunker_body)
-            index += 1
-        elif index == 3:
-            image = BUNKER_DESTROY3_IMAGE
-            self.replace_image(cast, bunker, image, bunker_body)
-            index += 1
-        elif index == 4:
-            image = BUNKER_DESTROY4_IMAGE
-            self.replace_image(cast, bunker, image, bunker_body)
-            index += 1
+        # elif index == 2:
+        #     image = BUNKER_DESTROY2_IMAGE
+        #     self.replace_image(cast, bunker, image, bunker_body)
+        #     index += 1
+        # elif index == 3:
+        #     image = BUNKER_DESTROY3_IMAGE
+        #     self.replace_image(cast, bunker, image, bunker_body)
+        #     index += 1
+        # elif index == 4:
+        #     image = BUNKER_DESTROY4_IMAGE
+        #     self.replace_image(cast, bunker, image, bunker_body)
+        #     index += 1
         else:
             cast.remove_actor(BUNKER_GROUP, bunker)
             index = 1

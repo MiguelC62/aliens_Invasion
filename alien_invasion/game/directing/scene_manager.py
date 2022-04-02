@@ -17,7 +17,7 @@ from game.scripting.change_scene_action import ChangeSceneAction
 from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_alien_action import CollideAlienAction
 from game.scripting.collide_bombs_action import CollideBombsAction
-#from game.scripting.collide_projectil_bomb_action import CollideProjectilBombAction
+from game.scripting.collide_projectil_bomb_action import CollideProjectilBombAction
 from game.scripting.collide_bunkers_action import CollideBunkersAction
 from game.scripting.collide_tank_action import CollideTankAction
 from game.scripting.control_tank_action import ControlTankAction
@@ -55,7 +55,7 @@ class SceneManager:
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_ALIENS_ACTION = CollideAlienAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BOMBS_ACTION = CollideBombsAction(PHYSICS_SERVICE, AUDIO_SERVICE, VIDEO_SERVICE)
-    #COLLIDE_PROJECTIL_BOMB_ACTION = CollideProjectilBombAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    COLLIDE_PROJECTIL_BOMB_ACTION = CollideProjectilBombAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_BUNKERS_ACTION = CollideBunkersAction(PHYSICS_SERVICE, AUDIO_SERVICE, VIDEO_SERVICE)
     COLLIDE_TANK_ACTION = CollideTankAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_TANK_ACTION = ControlTankAction(KEYBOARD_SERVICE)
@@ -241,10 +241,8 @@ class SceneManager:
         cast.add_actor(TANK_GROUP, tank)
 
     def _add_projectils(self, cast):
-        cast.clear_actors(PROJECTILS_GROUP)
         x = CENTER_X - PROJECTILS_WIDTH / 2
-        y = SCREEN_HEIGHT - PROJECTILS_HEIGHT 
-        
+        y = SCREEN_HEIGHT - PROJECTILS_HEIGHT
         for i in range(PROJECTILS_NUMBER):
             position = Point(x, y)
             size = Point(PROJECTILS_WIDTH, PROJECTILS_HEIGHT)
